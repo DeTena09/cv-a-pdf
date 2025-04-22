@@ -1,6 +1,6 @@
 # Automatización de Conversión de CVs
 
-Este proyecto permite convertir CVs en PDF a documentos `.docx` con formato predefinido, utilizando inteligencia artificial para interpretar el contenido y rellenar una plantilla.
+Este proyecto permite convertir CVs en PDF a documentos `.docx` con formato predefinido, utilizando inteligencia artificial para interpretar el contenido y rellenar una plantilla. Incluye una interfaz gráfica simple para seleccionar múltiples archivos.
 
 ---
 
@@ -9,7 +9,7 @@ Este proyecto permite convertir CVs en PDF a documentos `.docx` con formato pred
 ```
 cv_automation/
 │
-├── main.py                         # Script principal
+├── main.py                         # Interfaz gráfica principal
 ├── pdf_reader.py                   # Extracción de texto desde PDF
 ├── ai_parser.py                    # Análisis del texto con IA (GPT)
 ├── docx_writer.py                  # Generación del Word con formato
@@ -20,10 +20,8 @@ cv_automation/
 ├── README.md                       # Este archivo
 ├── templates/
 │   └── plantilla.docx              # Plantilla Word
-├── input_pdfs/
-│   └── ejemplo.pdf                 # CVs en PDF
-└── output_docs/
-    └── ejemplo_generado.docx       # Salida generada
+├── input_pdfs/                     # Carpeta temporal de PDFs seleccionados
+└── output_docs/                    # Documentos Word generados
 ```
 
 ---
@@ -31,51 +29,48 @@ cv_automation/
 ## ▶️ Cómo usar
 
 1. **Instala dependencias**  
-   Ejecuta en tu entorno:
+   Ejecuta:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Crea un archivo `.env` con tu API key**  
-   En la raíz del proyecto, crea un archivo `.env` con el siguiente contenido:
+2. **Configura tu clave de API en un `.env`**  
+   En la raíz del proyecto crea un archivo `.env`:
 
    ```env
    OPENAI_API_KEY=tu_clave_api
    ```
 
-3. **Configura el archivo `config.py`**  
-   Ya está preparado para leer automáticamente tu clave desde el `.env`.
-
-4. **Agrega tus CVs**  
-   Coloca los archivos PDF dentro de `input_pdfs/`.
-
-5. **Ejecuta el script**  
-   Corre el archivo principal:
+3. **Ejecuta la aplicación con interfaz gráfica**  
 
    ```bash
    python main.py
    ```
 
+4. **Selecciona uno o más archivos PDF y haz clic en “Procesar”**  
+   Los documentos `.docx` se generarán automáticamente y se guardarán en la carpeta `output_docs/`.
+
 ---
 
 ## 🧠 ¿Cómo funciona?
 
-1. Se extrae texto del CV en PDF.
-2. Se analiza el texto con una IA para obtener estructura (nombre, experiencia, estudios...).
-3. Se rellena automáticamente un `.docx` con esa información utilizando una plantilla predefinida.
+1. Se extrae el texto del CV desde PDF.
+2. Se analiza el contenido con GPT (OpenAI API moderna).
+3. Se genera un `.docx` con la estructura deseada.
+4. Archivos PDF seleccionados se copian temporalmente a `input_pdfs/` y se eliminan tras el procesamiento.
 
 ---
 
 ## 📌 Requisitos
 
 - Python 3.8 o superior
-- Cuenta de OpenAI con clave de API válida
+- Cuenta de OpenAI con API Key válida
 
 ---
 
 ## 🛠 En desarrollo
 
-- Soporte para múltiples idiomas
-- Procesamiento en lote de múltiples PDFs
-- Validación de campos antes de exportar
+- Soporte multilenguaje
+- Procesamiento masivo (batch)
+- Vista previa de resultados antes de exportar
