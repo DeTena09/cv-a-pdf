@@ -1,0 +1,3 @@
+OPENAI_API_KEY = "tu_api_key"
+PLANTILLA_PATH = "templates/plantilla.docx"
+OUTPUT_DIR = "output_docs"
