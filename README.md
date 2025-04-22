@@ -13,8 +13,10 @@ cv_automation/
 ├── pdf_reader.py                   # Extracción de texto desde PDF
 ├── ai_parser.py                    # Análisis del texto con IA (GPT)
 ├── docx_writer.py                  # Generación del Word con formato
-├── config.py                       # Configuraciones generales
+├── config.py                       # Configuraciones generales y carga del .env
 ├── requirements.txt                # Librerías necesarias
+├── .env                            # Clave API (IGNORADA por Git)
+├── .gitignore                      # Archivos ignorados por Git
 ├── README.md                       # Este archivo
 ├── templates/
 │   └── plantilla.docx              # Plantilla Word
@@ -35,17 +37,20 @@ cv_automation/
    pip install -r requirements.txt
    ```
 
-2. **Configura tu API Key**  
-   En el archivo `config.py`, coloca tu clave de OpenAI:
+2. **Crea un archivo `.env` con tu API key**  
+   En la raíz del proyecto, crea un archivo `.env` con el siguiente contenido:
 
-   ```python
-   OPENAI_API_KEY = "tu_clave_api"
+   ```env
+   OPENAI_API_KEY=tu_clave_api
    ```
 
-3. **Agrega tus CVs**  
+3. **Configura el archivo `config.py`**  
+   Ya está preparado para leer automáticamente tu clave desde el `.env`.
+
+4. **Agrega tus CVs**  
    Coloca los archivos PDF dentro de `input_pdfs/`.
 
-4. **Ejecuta el script**  
+5. **Ejecuta el script**  
    Corre el archivo principal:
 
    ```bash
