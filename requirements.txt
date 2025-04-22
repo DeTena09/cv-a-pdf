@@ -1,3 +1,5 @@
 openai
 PyMuPDF
 python-docx
+python-dotenv
+
