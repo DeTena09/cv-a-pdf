@@ -10,6 +10,7 @@ from pdf_reader import extraer_texto_pdf
 from ai_parser import interpretar_cv
 from docx_writer import generar_docx
 from config import PLANTILLA_PATH, OUTPUT_DIR
+from create_docx import crear_cv_desde_json
 
 # Carpeta donde se guardan temporalmente los PDFs seleccionados
 INPUT_DIR = "input_pdfs"
@@ -61,6 +62,7 @@ class App:
     def _procesar_en_thread(self):
         errores = []  # Para almacenar errores
         os.makedirs(INPUT_DIR, exist_ok=True)  # Asegura que exista la carpeta temporal
+        os.makedirs(OUTPUT_DIR, exist_ok=True)  # Asegura que exista la carpeta de output
 
         for path_original in self.pdf_paths:
             nombre_pdf = os.path.basename(path_original)
@@ -73,10 +75,11 @@ class App:
                 # Extraer texto, procesar con IA, generar DOCX
                 texto = extraer_texto_pdf(path_temp)
                 datos = interpretar_cv(texto)
+        
 
                 nombre_salida = os.path.splitext(nombre_pdf)[0] + "_generado.docx"
                 output_path = os.path.join(OUTPUT_DIR, nombre_salida)
-                generar_docx(PLANTILLA_PATH, datos, output_path)
+                crear_cv_desde_json(datos, output_path)
 
             except Exception as e:
                 # Si falla algo, guardar el error
