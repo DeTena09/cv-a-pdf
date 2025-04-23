@@ -71,10 +71,7 @@ def crear_cv_desde_json(datos, output_path):
     habilidades = datos["habilidades"]
     agregar_linea(f"Perfil principal: {habilidades['perfil_principal']}")
     agregar_linea(f"Perfil secundario: {habilidades['perfil_secundario']}")
-    agregar_linea(f"Herramientas: {habilidades['otros']}")
-    agregar_linea(f"Lenguajes: {habilidades['lenguajes']}")
-    agregar_linea(f"Bases de datos: {habilidades['bbdd']}")
-    agregar_linea(f"Sistemas operativos: {habilidades['sistemas_operativos']}")
+    agregar_linea(f"Herramientas: {habilidades['herramientas']}")
 
     doc.save(output_path)
     print(f"CV generado correctamente en: {output_path}")

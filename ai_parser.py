@@ -8,14 +8,13 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 
 def interpretar_cv(texto_crudo):
     prompt = f"""
-Extrae los siguientes datos del CV que te muestro a continuación. La respuesta debe estar completamente en **español**, sin usar palabras en inglés, con excepcion de titulos, tecnologias etc.
-
+Extrae los siguientes datos del siguiente CV. Responde exclusivamente en **Español neutro y profesional**, como si estuvieras redactando un informe técnico sobre un candidato. Usa tercera persona (no utilices "yo", "he trabajado", "mi experiencia...").
 DATOS A EXTRAER:
 
 - Nombre y Apellidos
 - Perfil profesional: una lista con formato "Rol – Empresa (duración)", donde la duración sea en años y meses, por ejemplo: "Senior Back-End Engineer – Heytrade (6 meses)". Debe ir ordenado del más reciente al más antiguo.
 - Experiencia Profesional (una entrada por cada empresa o proyecto):
-  - Empresa, localización (ciudad o país si está disponible), rol, fecha de inicio y fin (puedes usar mes y año), descripción funcional y herramientas/tecnologías utilizadas
+ Para cada experiencia profesional, extrae los siguientes datos: nombre de la empresa, localización (ciudad o país si está disponible), puesto o rol desempeñado, fechas de inicio y finalización (usa mes y año), una descripción funcional redactada en tercera persona con un tono técnico y profesional (evitando el uso de la primera persona) y que sea lo mas completa posible, y el listado completo de herramientas y tecnologías utilizadas, separadas por comas.
 - Formación académica (centro, título, fecha de inicio y fin o solo año si no se especifica más)
 - Idiomas (lista con idioma y nivel, por ejemplo: "Español: nativo", "Inglés: C1")
 - Habilidades técnicas y directivas:
@@ -51,8 +50,7 @@ Devuelve los datos en este formato JSON (con todos los textos completamente en e
         }}
     ],
     "habilidades": {{
-        "perfil_principal": "", "perfil_secundario": "", "hardware": "",
-        "sistemas_operativos": "", "lenguajes": "", "bbdd": "", "otros": ""
+        "perfil_principal": "", "perfil_secundario": "", "herramientas": ""
     }}
 }}
 """

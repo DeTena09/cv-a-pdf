@@ -9,7 +9,7 @@ import threading
 from pdf_reader import extraer_texto_pdf
 from ai_parser import interpretar_cv
 from docx_writer import generar_docx
-from config import PLANTILLA_PATH, OUTPUT_DIR
+from config import OUTPUT_DIR
 from create_docx import crear_cv_desde_json
 
 # Carpeta donde se guardan temporalmente los PDFs seleccionados
