@@ -62,7 +62,13 @@ class App:
     def _procesar_en_thread(self):
         errores = []  # Para almacenar errores
         os.makedirs(INPUT_DIR, exist_ok=True)  # Asegura que exista la carpeta temporal
-        os.makedirs(OUTPUT_DIR, exist_ok=True)  # Asegura que exista la carpeta de output
+        if not os.path.exists(OUTPUT_DIR):
+            os.makedirs(OUTPUT_DIR)
+            print(f"✅ Carpeta '{OUTPUT_DIR}' creada.")
+        else:
+            print(f"📂 Carpeta '{OUTPUT_DIR}' ya existe.")  # Asegura que exista la carpeta de output
+
+        
 
         for path_original in self.pdf_paths:
             nombre_pdf = os.path.basename(path_original)
