@@ -92,8 +92,7 @@ class App:
 
                 # Extraer texto, procesar con IA, generar DOCX
                 texto = extraer_texto_pdf(path_temp)
-                datos = interpretar_cv(texto)
-        
+                datos = interpretar_cv(texto, descripcion)
 
                 nombre_salida = os.path.splitext(nombre_pdf)[0] + "_generado.docx"
                 output_path = os.path.join(OUTPUT_DIR, nombre_salida)
