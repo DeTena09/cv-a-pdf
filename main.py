@@ -28,6 +28,13 @@ class App:
         self.select_button = tk.Button(root, text="Seleccionar PDFs", command=self.seleccionar_pdfs)
         self.select_button.pack(pady=5)
 
+        # Campo para descripción del proyecto
+        self.descripcion_label = tk.Label(root, text="Descripción del proyecto:")
+        self.descripcion_label.pack(pady=(15, 5))
+
+        self.descripcion_proyecto = tk.Text(root, height=5, width=60)
+        self.descripcion_proyecto.pack(padx=10, pady=(0, 10))
+
         # Botón para lanzar el procesamiento
         self.process_button = tk.Button(root, text="Procesar", command=self.procesar_cvs)
         self.process_button.pack(pady=10)
@@ -51,15 +58,20 @@ class App:
         if not self.pdf_paths:
             messagebox.showerror("Error", "Primero selecciona uno o más archivos PDF.")
             return
+        
+        descripcion = self.descripcion_proyecto.get("1.0", tk.END).strip()
+        if not descripcion:
+            messagebox.showerror("Error", "Por favor ingresa la descripción del proyecto.")
+            return
 
         # Mostrar que se está procesando y deshabilitar el botón
         self.progress.config(text="Procesando...", foreground="blue")
         self.process_button.config(state=tk.DISABLED)
 
         # Lanzar en hilo separado para no bloquear la interfaz
-        threading.Thread(target=self._procesar_en_thread).start()
+        threading.Thread(target=self._procesar_en_thread, args=(descripcion,)).start()
 
-    def _procesar_en_thread(self):
+    def _procesar_en_thread(self, descripcion):
         errores = []  # Para almacenar errores
         os.makedirs(INPUT_DIR, exist_ok=True)  # Asegura que exista la carpeta temporal
         if not os.path.exists(OUTPUT_DIR):
