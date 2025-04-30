@@ -1,76 +1,72 @@
-# Automatización de Conversión de CVs
+# 🧠 CV Processor 1.0c
 
-Este proyecto permite convertir CVs en PDF a documentos `.docx` con formato predefinido, utilizando inteligencia artificial para interpretar el contenido y rellenar una plantilla. Incluye una interfaz gráfica simple para seleccionar múltiples archivos.
+Conversor automático de CVs en PDF a Word con formato empresarial. Extrae datos clave usando inteligencia artificial y genera documentos `.docx` listos para entregar, basados en una plantilla profesional (Softtek).
 
 ---
 
-## 📁 Estructura del Proyecto
+## 🚀 Características principales
+
+- 📄 Procesa uno o varios CVs en PDF
+- 🤖 Usa OpenAI para extraer datos estructurados (nombre, experiencia, formación, idiomas, etc.)
+- 📄 Genera un `.docx` con formato fijo (logo, estilos, tablas, interlineado)
+- 🧪 Modo test offline con archivos JSON
+- 🖥️ Interfaz local con `tkinter`
+- 🔐 Manejo seguro de claves con `.env`
+
+---
+
+## 📦 Requisitos
+
+- Python 3.10+
+- Cuenta de OpenAI con clave API
+
+---
+
+## 🔧 Instalación
+
+```bash
+git clone https://github.com/tuusuario/tu-repo.git
+cd tu-repo
+pip install -r requirements.txt
+```
+
+Crea un archivo `.env` en la raíz con tu clave de API:
+
+```env
+OPENAI_API_KEY=sk-...
+```
+
+---
+
+## 🖥️ Ejecutar la app
+
+```bash
+python main.py
+```
+
+---
+
+## 📁 Estructura esperada
 
 ```
-cv_automation/
-│
-├── main.py                         # Interfaz gráfica principal
-├── pdf_reader.py                   # Extracción de texto desde PDF
-├── ai_parser.py                    # Análisis del texto con IA (GPT)
-├── docx_writer.py                  # Generación del Word con formato
-├── config.py                       # Configuraciones generales y carga del .env
-├── requirements.txt                # Librerías necesarias
-├── .env                            # Clave API (IGNORADA por Git)
-├── .gitignore                      # Archivos ignorados por Git
-├── README.md                       # Este archivo
+.
+├── main.py
+├── test.py
+├── create_docx.py
 ├── templates/
-│   └── plantilla.docx              # Plantilla Word
-├── input_pdfs/                     # Carpeta temporal de PDFs seleccionados
-└── output_docs/                    # Documentos Word generados
+│   ├── plantilla.docx
+│   └── softtek.png
+├── output_docs/
+├── .env
+├── requirements.txt
+└── .github/
+    └── workflows/
+        └── build-macos.yml
 ```
 
 ---
 
-## ▶️ Cómo usar
+## ✍️ Créditos
 
-1. **Instala dependencias**  
-   Ejecuta:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. **Configura tu clave de API en un `.env`**  
-   En la raíz del proyecto crea un archivo `.env`:
-
-   ```env
-   OPENAI_API_KEY=tu_clave_api
-   ```
-
-3. **Ejecuta la aplicación con interfaz gráfica**  
-
-   ```bash
-   python main.py
-   ```
-
-4. **Selecciona uno o más archivos PDF y haz clic en “Procesar”**  
-   Los documentos `.docx` se generarán automáticamente y se guardarán en la carpeta `output_docs/`.
-
----
-
-## 🧠 ¿Cómo funciona?
-
-1. Se extrae el texto del CV desde PDF.
-2. Se analiza el contenido con GPT (OpenAI API moderna).
-3. Se genera un `.docx` con la estructura deseada.
-4. Archivos PDF seleccionados se copian temporalmente a `input_pdfs/` y se eliminan tras el procesamiento.
-
----
-
-## 📌 Requisitos
-
-- Python 3.8 o superior
-- Cuenta de OpenAI con API Key válida
-
----
-
-## 🛠 En desarrollo
-
-- Soporte multilenguaje
-- Procesamiento masivo (batch)
-- Vista previa de resultados antes de exportar
+Desarrollado por [DeTena09](https://github.com/DeTena09)  
+Versión: `1.0c`
