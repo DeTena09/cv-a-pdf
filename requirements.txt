@@ -2,5 +2,6 @@ openai>=1.0.0
 python-docx
 python-dotenv
 PyPDF2
+PyMuPDF
 pdfplumber
 pyinstaller
