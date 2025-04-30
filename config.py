@@ -4,5 +4,5 @@ import os
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-PLANTILLA_PATH = "templates/plantilla.docx"
+IMAGE_PATH = "templates/softteck.png"
 OUTPUT_DIR = "output_docs"
